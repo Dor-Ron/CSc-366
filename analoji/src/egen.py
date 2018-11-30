@@ -1,6 +1,46 @@
-from AntiUnification.AntiUnification import AntiUnify as au 
-from RTG.RTG import RTG
-from SIT.SIT import SIT
+from AntiUnification.AntiUnification import * 
+from RTG.RTG import Letter_String_RTG
+from RTG.RTG import Letter_String_RTG
+
+def e_generalization(rtg_a, b_term, rtg_c, modulo_equational_theory = None):
+    ''' performs e-generalization algorithm, should return computed solution to
+        proportional analogy, has room to include modulo equational theory
+        in case of constrained e-generalization 
+    '''
+
+    # Step 1 - compute common grammar for terms A and C
+    # *** algorithm assumes predetermined knowledge of regular tree grammars ***
+    # hard to generalize for all domains, normally this would be achieved through
+    # the tree grammar intersection algorithm in the Tree Automata Techniques and 
+    # Applications book by Comon
+
+    # Note code for generate_grammar does not exist
+
+    ''' 
+    common_grammar = generate_grammar( anti_unify(rtg_a, rtg_c)[0] ) 
+    '''
+
+    # Step 2 - generate substitution sets to revert A and C to their form
+    # often done at the same time as step 1, as we chose to do it
+
+    ''' 
+    s_set_a = anti_unify(rtg_a, rtg_c)[1]
+    s_set_c = anti_unify(rtg_a, rtg_c)[2]
+    '''
+
+    # Step 3 - find substitution set mapping common_grammar to B
+
+    # Step 4 - traverse common_grammar with A's grammar and C's grammar
+    # making not of similar mappings
+
+    # Step 5 - iterate through similar mappings if they exist, and apply them to
+    # B in the same way they were applied to A to get C in order to find D and return i
+    ''' 
+    return tree_factory(common_grammar) 
+    '''
+
+
+
 
 if __name__ == '__main__':
     # run program
@@ -10,11 +50,8 @@ if __name__ == '__main__':
     c = str(input("Enter value for C: "))
     print(f"\n{a} : {b} :: {c} : <D>")
     print("***** Calculating <D> *****\n")
-    # Steps to use E-Generalization for Proportional String Analogies
 
-    # 1. Generate grammar for A, B, and C
-    # 2. Find universal substitutions of grammars for terms A and C
-    # 3. Find common grammar of terms A and C
-    # 4. look for mappings of A's grammar into C's grammar
-    # 5. If mapping found, apply to B's grammar to generate D's grammar values
-    # 6. Use SIT or other heuristic to select best result from generated D grammar
+    # generate grammar for A, B, and C
+    # already pre-made grammar for letter string terms
+
+    e_generalization(Letter_String_RTG(a), b, Letter_String_RTG(c))

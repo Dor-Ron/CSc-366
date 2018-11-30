@@ -37,7 +37,9 @@ class RTG():
         if type(payload) == set:
             self.__signatures = payload
         else:
-            self.__signatures = set(payload)
+            self.__signatures = payload  # can't make set out of dictionary, 
+                                         # but already unique keys by definition so 
+                                         # practically similar 
 
     def setter_nonterminals(self, payload):
         ''' sets nonterminals set from term based off of right_offset'''
@@ -83,22 +85,22 @@ class Letter_String_RTG(RTG):
         self.setter_rules(self.compute_rules()) 
         self.setter_start(self.compute_start()) 
 
-    def compute_signatures():
+    def compute_signatures(self):
         ''' returns signature array containing dicts mapping constants 
             to their arity for letter string problems
         '''
         return [{constant: 0} for constant in ascii_lowercase]
 
-    def compute_nonterminals():
+    def compute_nonterminals(self):
         ''' returns array of letters representing possible end symbols for 
             letter string problems 
         '''
         return list(ascii_lowercase)
 
-    def compute_rules():
+    def compute_rules(self):
         ''' returns array of rules for letter string grammars '''
         return []  # signature set contains no functions therefore no rules, just constants
 
-    def compute_start():
+    def compute_start(self):
         ''' return array of possible start symbols for letter string problems ''' 
         return list(ascii_lowercase)
