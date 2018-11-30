@@ -34,12 +34,13 @@ def e_generalization(rtg_a, b_term, rtg_c, modulo_equational_theory = None):
     # making not of similar mappings
 
     # Step 5 - iterate through similar mappings if they exist, and apply them to
-    # B in the same way they were applied to A to get C in order to find D and return i
+    # B in the same way they were applied to A to get C in order to find D and return it
     ''' 
-    return tree_factory(common_grammar) 
+    options = tree_factory(common_grammar) 
     '''
 
-
+    # [OPTIONAL]
+    # Apply heuristic to compute D and return result instead of above less-educated result
 
 
 if __name__ == '__main__':
