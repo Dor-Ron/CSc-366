@@ -93,6 +93,7 @@ def anti_unify(rtg1, rtg2, modulo_equational_theory = None):
                 # same value belonging to different tree?
                 if not tree_equal(pair1[1], pair2[1]) and pair1[1].get_data() == pair2[1].get_data():
                     del substitution_set_rtg1[pair1[0]]
+                    generalization = Tree("expr", pair1[1].get_data(), substitution_set_rtg1.keys())
                     
         for pair1 in substitution_set_rtg2.items():
             for pair2 in substitution_set_rtg2.items():
